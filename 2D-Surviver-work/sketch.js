@@ -3,27 +3,18 @@ let me;
 let obstacle1 = [];
 let obstacle2 = [];
 let obstacle3 = [];
-let obstacle4 = [];
-let obstacle5 = [];
-let box;
 let time = 0
-//let mySound;
 
 function setup(){
  createCanvas(400,400)
  me = new Avatar(width/2,height/2,4)
 
 }
-//function preload() {
-//  soundFormats('mp3', 'ogg','wav');
-//  mySound = loadSound('486166__ruben-uitenweerde__glass-breaking.wav')
-//}
 
 function draw(){
   background(10,260,97)
   me.drawMe();
   me.moveMe();
-  MovementBox();
   if (frameCount % 60 == 0){
     time = time + 1
   }
@@ -130,8 +121,6 @@ class Obstacle1 {
   damageMe(){
     if (this.x >= me.x-14 && this.x <= me.x+14 && this.y+14 > me.y && this.y-14 < me.y){
       life = life-1
-    //  mySound.setVolume(.1);
-    //  mySound.play();
     }
   }
 }
@@ -153,8 +142,6 @@ class Obstacle2 {
   damageMe2() {
     if(this.x >= me.x-20 && this.x <= me.x+20 && this.y > me.y-40 && this.y < me.y+20){
       life = life-1
-    //  mySound.setVolume(.1);
-    //  mySound.play();
     }
   }
 }
@@ -176,37 +163,6 @@ class Obstacle3 {
    damageMe3() {
      if(this.x >= me.x-5 && this.x <= me.x+5 && this.y >= me.y-2.5 && this.y <= me.y+2.5){
        life = life-1
-      // mySound.setVolume(.1);
-      // mySound.play();
      }
    }
-}
-function MovementBox(){
-strokeWeight(5);
-noFill();
-rect(50,50,300,300);
-if(this.x+150 < me.x){
-  me.x = me.x-10
-}
-if(this.x+150 > me.x) {
-  return
-}
-if(this.x-150 < me.x){
-  me.x = me.x+10
-}
-if(this.x-150 > me.x) {
-  return
-}
-if (this.y+150 < me.y){
-  me.y=me.y-10
-}
-if(this.y+150 > me.y){
-  return
-}
-if (this.y-150 < me.y){
-  me.y=me.y+10
-}
-if (this.y-150 > me.y){
-  return
-}
 }
